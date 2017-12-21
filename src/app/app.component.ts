@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  name = 'Hendro';
+  listName: string[] = [];
+
+  constructor(){
+    this.listName.push(this.name);
+  }
+
+  sayHello(){
+    this.listName.push(this.name);
+  }
 }
