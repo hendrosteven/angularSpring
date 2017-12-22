@@ -29,6 +29,15 @@ export class CategoryComponent {
     });
   }
 
+  onSaveCategory(){
+    this.categoryService.save(this.category).subscribe(output=>{
+      if(output.payload){
+        this.categories.push(output.payload);
+      }
+    },error=>{
+      console.log(error);
+    });
+  }
   
 
 
