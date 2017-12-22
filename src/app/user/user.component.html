@@ -11,32 +11,47 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="login">
       <div class="col-lg-12">
-        <legend>User Login</legend>
-        <div class="form-group">
-          <label for="">Email</label>
-          <input type="text" [(ngModel)]="user.email" class="form-control" id="" placeholder="Enter email">
+        <div *ngIf="!hasLogin">
+          <legend>User Login</legend>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" [(ngModel)]="email" class="form-control" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Enter password">
+          </div>
+          <button class="btn btn-primary" (click)="onLogin()">Login</button>
         </div>
-        <div class="form-group">
-          <label for="">Password</label>
-          <input type="password" [(ngModel)]="user.password" class="form-control" id="" placeholder="Enter password">
+        <div *ngIf="hasLogin">
+            <br/>
+            <button class="btn btn-danger" (click)="onLogout()">Logout</button>
         </div>
-        <button class="btn btn-primary" (click)="onLogin()">Login</button>
       </div>
+      
     </div>
     <div role="tabpanel" class="tab-pane" id="register">
       <div class="col-lg-12">
         <legend>User Registration</legend>
+
+
+        <div class="alert alert-success" *ngIf="saved">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          User saved!
+        </div>
+
+
         <div class="form-group">
           <label for="">Full name</label>
-          <input type="text" [(ngModel)]="user.fullName" class="form-control" id="" placeholder="Enter full name">
+          <input type="text" [(ngModel)]="user.fullName" class="form-control" placeholder="Enter full name">
         </div>
         <div class="form-group">
           <label for="">Email</label>
-          <input type="text" [(ngModel)]="user.email" class="form-control" id="" placeholder="Enter email">
+          <input type="text" [(ngModel)]="user.email" class="form-control" placeholder="Enter email">
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" [(ngModel)]="user.password" class="form-control" id="" placeholder="Enter password">
+          <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Enter password">
         </div>
         <button class="btn btn-primary" (click)="onRegister()">Register</button>
       </div>

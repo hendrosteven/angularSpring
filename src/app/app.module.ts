@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './service/category.service';
 import { UserComponent } from './user/user.component';
+import { UserService } from './service/user.service';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { UserComponent } from './user/user.component';
     HttpModule,
     BrowserModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
