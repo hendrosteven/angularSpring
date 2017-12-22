@@ -11,6 +11,7 @@ import { CategoryService } from '../service/category.service';
 export class CategoryComponent {
 
   categories: Category[] = [];
+  category: Category = new Category();
 
   constructor(private categoryService: CategoryService) { 
     this.categoryService.findAll().subscribe(data=>{
