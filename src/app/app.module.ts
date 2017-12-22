@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './service/category.service';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent
+    CategoryComponent,
+    UserComponent
   ],
   imports: [
     FormsModule,
