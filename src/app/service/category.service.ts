@@ -1,21 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
-import { CategoryComponent } from '../category/category.component';
-import { Category } from '../classes/category';
+import {CategoryComponent} from '../category/category.component';
+import {Category} from '../classes/category';
 
 @Injectable()
 export class CategoryService {
 
   url : string = 'http://localhost:8080/api/category';
-  headers: any;
-  options: any;
+  headers : any;
+  options : any;
 
   constructor(private http : Http) {
-
-    
-
   }
 
   findAll() {
@@ -26,9 +23,17 @@ export class CategoryService {
       .catch(this.handleError);
   }
 
-  save(category){
-    return this.http.post(this.url, category)
-      .map(res=>res.json())
+  save(category) {
+    this.headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + localStorage.getItem('token')
+    });
+    this.options = new RequestOptions({headers: this.headers});
+
+    return this
+      .http
+      .post(this.url, category, this.options)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 

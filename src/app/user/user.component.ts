@@ -40,7 +40,7 @@ export class UserComponent {
         let token = btoa(this.email + ':' + hash);  
         localStorage.setItem('token', token);
         this.hasLogin = true;
-        console.log(token);
+        console.log('Token: '+ token);
       }else{
         alert('Login fail');
       }
